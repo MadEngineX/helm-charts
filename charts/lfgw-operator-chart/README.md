@@ -9,7 +9,7 @@ Go to Kubernetes cluster.
 Add a chart helm repository with follow commands:
 
 ```bash 
-helm repo add madenginex https://MadEngineX.github.io/helm-charts/
+helm repo add m8x https://MadEngineX.github.io/helm-charts/
 
 helm repo update
 ```
@@ -17,5 +17,5 @@ helm repo update
 ## Deploy lfgw-config-operator
 
 ```bash 
-helm upgrade --install lfgw-operator madenginex/lfgw-operator-chart 
+helm upgrade --install lfgw-operator m8x/lfgw-operator-chart 
 ```

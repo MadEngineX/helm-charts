@@ -1,0 +1,12 @@
+{{- if .Values.aclConfigMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "lfgw.fullname" . }}
+data:
+  {{ .Values.aclConfigMap.filename }}: |
+{{- range $key, $value := .Values.aclConfigMap.data }}
+    {{ $key }}: {{ $value }}
+{{- end }}  
+{{- end}}
+

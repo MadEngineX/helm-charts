@@ -1,0 +1,11 @@
+{{- if hasKey .Values "envs" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "lfgw.fullname" . }}-env
+data:
+  ACL_PATH: {{ .Values.aclConfigMap.mountPath }}/{{ .Values.aclConfigMap.filename }}
+{{- range $key, $value := .Values.envs }}
+  {{ $key }}: {{ quote $value }}
+{{- end }}
+{{- end }}

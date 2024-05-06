@@ -1,0 +1,91 @@
+# Default values for lfgw.
+
+replicaCount: 2
+
+image:
+  repository: ghcr.io/weisdd/lfgw
+  pullPolicy: IfNotPresent
+  tag: "v0.12.4"
+
+# annotations: 
+#   configmap.reloader.stakater.com/reload: "lfgw-acl"
+
+## Specify LFGW envs (Doc: https://github.com/weisdd/lfgw?tab=readme-ov-file#environment-variables)
+envs:
+  OIDC_REALM_URL: https://keycloak.mycompany.org/realms/devops 
+  OIDC_CLIENT_ID: grafana
+  LFGW_MODE: oidc
+  DEBUG: "true"
+  PORT: "8080"
+  READ_TIMEOUT: "10s"
+  WRITE_TIMEOUT: "10s"
+  UPSTREAM_URL: "http://vmsingle-vms.monitoring.svc:8429/"
+  SAFE_MODE: "true"
+  SET_PROXY_HEADERS: "false"
+
+## Set "create: false" if you want to use lfgw-config-operator
+aclConfigMap:
+  create: true 
+  filename: acl.yaml
+  mountPath: /acl
+  data: 
+    grafanaadmin: .*
+    admin: .*
+    editor: .*
+    bots-dev-rw: bots-dev
+    bots-dev-ro: bots-dev
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+
+resources: 
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+## Dependency Chart for lfgw-config-operator
+## values https://github.com/MadEngineX/helm-charts/blob/main/charts/lfgw-operator-chart/values.yaml
+lfgw-operator-chart:
+  enabled: false
+#   envs: 
+#     CM_NAMESPACE: infra-monitoring
+#     CM_NAME: lfgw-acl
+#     CM_FILENAME: "acl.yaml"
+#     LOG_LEVEL: info
+
+#   defaultACL: 
+#     - roleName: "admin"
+#       namespaceFilter: ".*"
