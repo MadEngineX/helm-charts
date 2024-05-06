@@ -1,0 +1,72 @@
+# Default values for lfgw-operator-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+image:
+  repository: ksxack/lfgw-config-operator
+  pullPolicy: IfNotPresent
+  tag: "0.0.1"
+
+imagePullSecrets: []
+
+envs: 
+  CM_NAMESPACE: infra-monitoring
+  CM_NAME: lfgw-acl
+  CM_FILENAME: "acl.yaml"
+  LOG_LEVEL: info
+
+# defaultACL: 
+#   - roleName: "admin"
+#     namespaceFilter: ".*"
+#   - roleName: "grafanaadmin"
+#     namespaceFilter: ".*"    
+#   - roleName: "editor"
+#     namespaceFilter: ".*"     
+
+serviceAccount:
+  create: true
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+rbac:
+  # Specifies whether a ClusterRoles, ClusterRoleBingings should be created
+  create: true  
+
+# Port for Prometheus-format metrics, located on /metrics
+service:
+  type: ClusterIP
+  port: 8080
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: 
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

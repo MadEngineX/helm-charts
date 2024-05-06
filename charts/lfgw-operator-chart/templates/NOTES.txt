@@ -1,0 +1,11 @@
+1. lfgw-config-operator installed, now you can deploy ACLs, ACL-rules will be merged in ConfigMaP:
+  {{ .Release.Namespace }}/{{ include "lfgw-operator-chart.fullname" . }}-env
+2. Make sure that changes in ConfigMap could be re-readed by LFGW. For this purpose you can use stakater/reloader operator and add annotation to LFGW Deployment: 
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: lfgw-deployment
+    annotations: 
+      configmap.reloader.stakater.com/reload: "lfgw-acl"
+3. Metrics endpoint available through ClusterIP Service: 
+  {{ .Release.Namespace }}/{{ include "lfgw-operator-chart.fullname" . }}

@@ -1,0 +1,10 @@
+{{- if hasKey .Values "envs" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "lfgw-operator-chart.fullname" . }}-env
+data:
+{{- range $key, $value := .Values.envs }}
+  {{ $key }}: {{ quote $value }}
+{{- end }}
+{{- end }}

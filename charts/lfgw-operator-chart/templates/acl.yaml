@@ -1,0 +1,12 @@
+{{- if hasKey .Values "defaultACL" }}
+apiVersion: controls.lfgw.io/v1alpha1
+kind: ACL
+metadata:
+  name: {{ include "lfgw-operator-chart.fullname" . }}
+spec:
+  rules:
+    {{- range $key, $value := .Values.defaultACL }}
+      - roleName: {{ quote $value.roleName }}
+        namespaceFilter: {{ quote $value.namespaceFilter }}
+    {{- end }}  
+{{- end }}  

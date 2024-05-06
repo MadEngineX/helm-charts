@@ -1,0 +1,51 @@
+{{- if .Values.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "lfgw-operator-chart.fullname" . }}-acl-crud
+rules:
+- apiGroups:
+  - controls.lfgw.io
+  resources:
+  - acls
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - controls.lfgw.io
+  resources:
+  - acls/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - controls.lfgw.io
+  resources:
+  - acls/status
+  verbs:
+  - get
+  - patch
+  - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "lfgw-operator-chart.fullname" . }}-configmap-crud
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+{{- end }}
