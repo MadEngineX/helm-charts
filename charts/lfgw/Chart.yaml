@@ -27,4 +27,4 @@ dependencies:
   - name: lfgw-operator-chart
     version: "0.2.0"
     repository: https://MadEngineX.github.io/helm-charts/
-    condition: lfgwConfigOperator.enabled
+    condition: lfgw-operator-chart.enabled
