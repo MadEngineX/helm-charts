@@ -25,4 +25,12 @@ You can also deploy [lfgw-config-operator](https://github.com/MadEngineX/lfgw-co
 lfgw-operator-chart:
   enabled: false
 ```
-If you want to use __lfgw-config-operator__, specify `aclConfigMap.create: false`. Also, due to limitation on operator side you need to deploy [stakater/Reloader](https://github.com/stakater/Reloader) to rollout LFWG Deployment on ConfigMap changes.
+
+Before you install helm release, apply CRD for operatos: 
+```bash
+kubectl apply -f https://raw.githubusercontent.com/MadE
+ngineX/lfgw-config-operator/main/config/crd/bases/controls.lfgw.io_acls.yaml
+```
+If you want to use __lfgw-config-operator__, specify `aclConfigMap.create: false`. 
+
+Also, due to limitation on operator side you need to deploy [stakater/Reloader](https://github.com/stakater/Reloader) to rollout LFWG Deployment on ConfigMap changes.

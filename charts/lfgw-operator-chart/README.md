@@ -16,6 +16,13 @@ helm repo update
 
 ## Deploy lfgw-config-operator
 
+Install CRD:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/MadE
+ngineX/lfgw-config-operator/main/config/crd/bases/controls.lfgw.io_acls.yaml
+```
+
+Deploy Helm release:
 ```bash 
 helm upgrade --install lfgw-operator m8x/lfgw-operator-chart 
 ```
