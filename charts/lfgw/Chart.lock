@@ -1,0 +1,6 @@
+dependencies:
+- name: lfgw-operator-chart
+  repository: https://MadEngineX.github.io/helm-charts/
+  version: 0.2.0
+digest: sha256:eafd588e9968d92d228f6b5dca85b450fbf43eee3a2519aef362592875890282
+generated: "2024-05-07T06:25:41.245257397+03:00"
