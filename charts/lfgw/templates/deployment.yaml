@@ -54,16 +54,22 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
           - name: acl-volume
+            {{- if index .Values "extraConfigMap" "enabled" }}
+            mountPath: {{ .Values.extraConfigMap.mountPath }}
+            {{- else }}
             mountPath: {{ .Values.aclConfigMap.mountPath }}
+            {{- end }}
             readOnly: true
       volumes:
       - name: acl-volume
         configMap:
           {{- if index .Values "lfgw-operator-chart" "enabled" }}
           name: {{ index .Values "lfgw-operator-chart" "envs" "CM_NAME"}}
+          {{- else if index .Values "extraConfigMap" "enabled" }}
+          name: {{ .Values.extraConfigMap.name }}
           {{- else }}
-          name: {{ include "lfgw.fullname" . }}
-          {{- end}}
+          name: {{ include "lfgw.fullname" . }}          
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

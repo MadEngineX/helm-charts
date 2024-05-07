@@ -35,6 +35,11 @@ aclConfigMap:
     bots-dev-rw: bots-dev
     bots-dev-ro: bots-dev
 
+extraConfigMap:
+  enabled: false
+  name: "acl-config-extra"
+  mountPath: /acl-extra
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
