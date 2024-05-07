@@ -39,6 +39,16 @@ entries:
   lfgw-operator-chart:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-07T12:36:56.235914595Z"
+    description: A Helm chart for Kubernetes
+    digest: ce1e2dfc3c85a3ac1d55c35cc1b731352717b80e0624dfca36ef89702075a79f
+    name: lfgw-operator-chart
+    type: application
+    urls:
+    - https://github.com/MadEngineX/helm-charts/releases/download/lfgw-operator-chart-0.3.0/lfgw-operator-chart-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-06T18:18:12.469662407Z"
     description: A Helm chart for Kubernetes
     digest: 5bbdd445145f207a51928d3e0722b15cd15c235646d429dce950c1b5f644e171
@@ -47,4 +57,4 @@ entries:
     urls:
     - https://github.com/MadEngineX/helm-charts/releases/download/lfgw-operator-chart-0.2.0/lfgw-operator-chart-0.2.0.tgz
     version: 0.2.0
-generated: "2024-05-07T12:33:44.149908531Z"
+generated: "2024-05-07T12:36:56.235931617Z"
