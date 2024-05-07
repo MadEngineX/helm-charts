@@ -28,8 +28,7 @@ lfgw-operator-chart:
 
 Before you install helm release, apply CRD for operatos: 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/MadE
-ngineX/lfgw-config-operator/main/config/crd/bases/controls.lfgw.io_acls.yaml
+kubectl apply -f https://raw.githubusercontent.com/MadEngineX/lfgw-config-operator/main/config/crd/bases/controls.lfgw.io_acls.yaml
 ```
 If you want to use __lfgw-config-operator__, specify `aclConfigMap.create: false`. 
 
