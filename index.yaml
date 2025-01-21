@@ -3,6 +3,16 @@ entries:
   common-chart:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-21T21:52:28.52158903Z"
+    description: A Helm chart for Kubernetes
+    digest: 065dc38f92700466ba40102dd78a9863fe1db9c79bc2183ecb1e51fc991a7c09
+    name: common-chart
+    type: application
+    urls:
+    - https://github.com/MadEngineX/helm-charts/releases/download/common-chart-0.1.1/common-chart-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-09-24T20:11:40.95436841Z"
     description: A Helm chart for Kubernetes
     digest: 1f8b14fbb0e5dbac0bb4ab1b654b63ce5bfa2e17af652bf3113b6bb23ab7a9e4
@@ -83,4 +93,4 @@ entries:
     urls:
     - https://github.com/MadEngineX/helm-charts/releases/download/lfgw-operator-chart-0.2.0/lfgw-operator-chart-0.2.0.tgz
     version: 0.2.0
-generated: "2024-09-24T20:11:41.077293514Z"
+generated: "2025-01-21T21:52:28.521606292Z"
