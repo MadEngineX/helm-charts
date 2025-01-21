@@ -35,6 +35,7 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+  
 
 service:
   type: ClusterIP
@@ -80,3 +81,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+envs: {}
+  # LOG_LEVEL: debug
+  # SERVER_URL: http://localhost/
