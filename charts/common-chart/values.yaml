@@ -4,6 +4,10 @@
 
 replicaCount: 1
 
+# trigger rollout restart even if no changes were made to the deployment
+# useful for CI/CD with image tags like 'latest'
+autoRestart: false
+
 image:
   repository: nginx
   pullPolicy: IfNotPresent
